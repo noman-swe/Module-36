@@ -14,7 +14,7 @@ for(const property in bottle){
     console.log(property, bottle[property]);
 }
 
-
+ 
 // 
 const keys = Object.keys(bottle);
 
