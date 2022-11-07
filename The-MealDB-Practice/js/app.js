@@ -1,43 +1,51 @@
 document.getElementById('search-err').style.display = 'none';
 
-function invalidSearch(styleAttribute) {
-    if (styleAttribute == 'none') {
-        document.getElementById('search-err').style.display = 'none';
-    }
-    else {
-        document.getElementById('search-err').style.display = 'block';
-    }
+
+function spinnerSet(styleAttribute) {
+    document.getElementById('spinner').style.display = styleAttribute;
 }
 
+function invalidSearch(styleAttribute) {
+    document.getElementById('spinner').style.display = styleAttribute;
+}
+
+// 
 const loadMeals = () => {
     // search
     const searchField = document.getElementById('txt-field');
+
     const searchTxt = searchField.value;
-    // console.log(searchTxt);
+    // spinner
+    spinnerSet('block');
+
     // clean input field
     searchField.value = '';
-    // document.getElementById('search-err').style.display = 'none';
-
 
     if (searchTxt == '') {
-
         invalidSearch('block');
-        // searchErr.style.display = 'block';
     }
     else {
+
         // api calling
         const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTxt}`;
         fetch(url)
             .then(res => res.json())
             .then(data => displayMeals(data.meals))
 
+        // error
         invalidSearch('none');
+
+
     }
 
 }
 
 const displayMeals = meals => {
     // console.log(meals);
+
+    // spinner
+    spinnerSet('none');
+
     const mealContainer = document.getElementById('meal-container');
     mealContainer.textContent = '';
     meals.forEach(meal => {
@@ -56,12 +64,9 @@ const displayMeals = meals => {
         mealContainer.appendChild(colDiv);
 
     });
-
 }
 
-
 const loadMealDetails = mealID => {
-    // console.log(mealID);
 
     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealID}`;
     fetch(url)

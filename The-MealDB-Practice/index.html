@@ -7,6 +7,12 @@
     <title>MealDB demo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <style>
+        #spinner {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,18 +27,25 @@
                         id="button-addon2">search</button>
                 </div>
             </div>
+            <!--  -->
+            <div id="spinner" class="text-center">
+                <div class="spinner-grow" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+            </div>
+            <!--  -->
         </div>
         <p id="search-err" class="text-center text-danger">invalid search</p>
     </div>
     <!-- show details start -->
     <div class="container">
         <div id="mealDetails">
-            
+
         </div>
     </div>
     <!-- show details end -->
 
-    
+
     <!-- show meals start -->
     <div class="container">
         <div id="meal-container" class="row row-cols-1 row-cols-md-3 g-4">
